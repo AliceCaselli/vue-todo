@@ -20,8 +20,10 @@
     </h1>
     <!-- un elenco di cose da fare -->
     <ul>
-      <li v-for="(todo, index) in todos">
+      <li v-for="(todo, index) in todos" :style="{color: todoColor}">
+
         {{todo}} - <span @click="deleteTodo(index)">cancella</span>
+
       </li>
     </ul>
 

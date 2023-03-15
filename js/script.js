@@ -19,6 +19,8 @@ createApp({
       
       // predispongo una proprietà per il nuovo todo
       newTodo: '',
+
+      todoColor: 'purple',
       
     }
   },
@@ -33,6 +35,7 @@ createApp({
 
     addTodo() {
       // inserire il contenuto di "newTodo" dentro il mio array di todo
+      
       this.todos.push(this.newTodo);
       this.newTodo = "";
       
