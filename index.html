@@ -8,6 +8,7 @@
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
@@ -19,19 +20,23 @@
       Cose da fare
     </h1>
     <!-- un elenco di cose da fare -->
-    <ul>
-      <li v-for="(todo, index) in todos" :style="{color: todoColor}">
+    <hr>
 
-        {{todo}} - <span @click="deleteTodo(index)">cancella</span>
+    <ul id="todo-list">
+      <!-- <li v-for="todo in todos" :class="todo.done == true ? 'done' : 'niente'">
+        {{ todo.text }}
+      </li> -->
+
+      <li v-for="(todo, index) in todos">
+
+        <span @click="toggleTodo(todo)" :style="todo.done == true ? {textDecoration: 'line-through', color: 'red', fontStyle: 'italic', opacity: 0.4} : ''" class="todo-text">{{ todo.text }}</span> - <span class="delete" @click="deleteTodo(index)"> &cross; </span>
 
       </li>
     </ul>
 
     <hr>
-    <!-- faccio un input
-      alla pressione del pulsante, il testo scritto verrà aggiunto come todo
-    -->
-    <input id="input" type="text" v-model="newTodo" @keyup.enter="addTodo()">
+
+    <input  @keyup.enter="addTodo()" type="text" v-model="newTodo.text" placeholder="Inserisci il testo">
     <button @click="addTodo()">Aggiungi</button>
 
   </div>
